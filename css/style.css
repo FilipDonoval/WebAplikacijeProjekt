@@ -59,9 +59,14 @@ footer {
 
     display: flex;
     justify-conetnt: space-around;
-    gap: 20px
+    gap: 5px
 }
-.page-header nav a {
+
+.page-header nav ul {
+    list-style: none;
+    display: flex;
+}
+.page-header nav ul a {
     color: #efefef;
     
     font-size: 24px;
@@ -74,9 +79,67 @@ footer {
     padding-bottom: 5px;
 }
 
-.page-header nav a:hover {
+.page-header nav ul a:hover {
     outline: 2px solid #102f4b;
     background-color: #15456B;
 
 }
+
+.page-header button {
+    display: none;
+}
+
+#overlay {
+    background-color: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    inset: 0;
+    top: 70px;
+    z-index: 9;
+    display: none;
+}
+@media screen and (max-width: 900px) {
+    .page-header nav {
+        position: fixed;
+        top: 70px;
+        right: -100%;
+        height: 100vh;
+        background-color: #174d77;
+        width: min(15em, 100%);
+        z-index: 10;
+        border-left: 1px solid #102f4b;
+        transition: right 200ms ease-in-out;
+    }
+    .page-header nav.show{
+        right: 0;
+    }
+    .page-header nav.show ~ #overlay {
+        display: block;
+    }
+    .page-header nav ul {
+        flex-direction: column;
+        width: 100%;
+    }
+    .page-header nav ul li {
+        width: 100%;
+        padding-left: 2em;
+        padding-top: 0.5em;
+        padding-bottom: 0.5em;
+    }
+
+    .page-header nav ul li:hover {
+        background-color: #15456B;
+        outline: 1px solid #102f4b;
+
+    }
+    .page-header nav ul li a:hover {
+        outline: none;
+        background-color: transparent;
+    }
+    .page-header button {
+        display: block;
+    }
+
+}
+
+
 
