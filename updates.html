@@ -9,14 +9,19 @@
     <!-- HEADER --------------------------------------------------------------->
     <header class="page-header">
         <a href="index.html">NauticApp</a>
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="updates.html">Updates</a>
-            <a href="galery.html">Galery</a>
-            <a href="download.html">Download</a>
-            <a href="about.html">About</a>
-            <a href="contact.html">Contact</a>
+        <nav id="navbar">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="updates.html">Updates</a></li>
+                <li><a href="galery.html">Galery</a></li>
+                <li><a href="download.html">Download</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
         </nav>
+        <button class="open-sidebar" onClick=openCloseSidebar() style="font-size: 36px; color: #efefef; background-color: transparent; border: none">☰</button>
+        <button class="close-sidebar" onClick=openCloseSidebar() style="font-size: 36px; color: #efefef; background-color: transparent; border: none">X</button>
+        <div id="overlay" onClick=openCloseSidebar()></div>
     </header>
 
     <!-- MAIN --------------------------------------------------------------->
@@ -46,5 +51,13 @@
             <a href="https://github.com/FilipDonoval/NauticMap">GitHub</a>
         </div>
     </footer>
+
+<script>    
+    const navbar = document.getElementById("navbar")
+    function openCloseSidebar() {
+        navbar.classList.toggle("show")
+    }
+
+</script>
 
 </html>
