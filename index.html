@@ -1,65 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nautic Application</title>
     <link rel="stylesheet" href="css/style.css">
-    
-</head>
-<body>
+
+  </head>
+  <body>
     <!-- HEADER --------------------------------------------------------------->
     <header class="page-header">
-        <a href="index.html">NauticApp</a>
-        <button class="open-sidebar" onClick=openCloseSidebar()>☰</button>
-        <nav id="navbar">
-            <ul>
-                <li><button class="close-sidebar" onClick=openCloseSidebar() >X</button></li>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="updates.html">Updates</a></li>
-                <li><a href="galery.html">Galery</a></li>
-                <li><a href="download.html">Download</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </nav>
-        
-        <div id="overlay" onClick=openCloseSidebar()></div>
+      <a href="index.html">NauticApp</a>
+      <button class="open-sidebar" onClick=openCloseSidebar()>☰</button>
+      <nav id="navbar">
+        <ul>
+          <li><button class="close-sidebar" onClick=openCloseSidebar() >X</button></li>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="updates.html">Updates</a></li>
+          <li><a href="galery.html">Galery</a></li>
+          <li><a href="download.html">Download</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div id="overlay" onClick=openCloseSidebar()></div>
     </header>
 
-    
+
     <!-- MAIN --------------------------------------------------------------->
     <main>
-        <section>
-            <h2>Nautic Map</h2>
-            <p>Free Nautic Map for android devices</p>
-            <a href="download.html">Download</a>
-        </section>
-        <section>
-            <img src="" alt="Image of Nautic Map on android device" >
-            <p>...</p>
-        </section>
+      <section>
+        <h2>Nautic Map</h2>
+        <p>Free Nautic Map for android devices</p>
+        <a class="download-button" href="download.html">Download</a>
+      </section>
+      <section>
+        <img src="" alt="Image of Nautic Map on android device" >
+        <p>...</p>
+      </section>
     </main>
-    
+
 
     <!-- FOOTER --------------------------------------------------------------->
     <footer>
-        <div>
-            <strong>Nautic App</strong>
-            <p>Free nautic map</p>
-        </div>
-        <div>
-            <a href="https://github.com/FilipDonoval/NauticMap">GitHub</a>
-        </div>
+      <div>
+        <strong>Nautic App</strong>
+        <p>Free nautic map</p>
+      </div>
+      <div>
+        <a href="https://github.com/FilipDonoval/NauticMap">GitHub</a>
+      </div>
     </footer>
-</body>
+  </body>
 
-<script>    
-    const navbar = document.getElementById("navbar")
-    function openCloseSidebar() {
-        navbar.classList.toggle("show")
-    }
+  <script>    
+  const navbar = document.getElementById("navbar")
+  function openCloseSidebar() {
+    navbar.classList.toggle("show")
+  }
 
-</script>
+  </script>
 
 </html>
