@@ -19,13 +19,43 @@
   --color-text: #F4F4F4;
    */
 
+  /*
   --text: #050316;
   --background: #f5f5f5;
   --primary: #005461;
   --secondary: #01858e;
   --accent: #00b8b5;
+   */
+
+  --text: hsl(243, 76%, 5%);
+  --background: hsl(0, 0%, 96%);
+  --primary: hsl(188, 100%, 19%);
+  --secondary: hsl(184, 99%, 28%);
+  --accent: hsl(179, 100%, 36%);
+
+  --text-50: hsl(0, 0%, 95%);
+  --text-100: hsl(0, 0%, 90%);
+  --text-200: hsl(0, 0%, 80%);
+  --text-300: hsl(0, 0%, 70%);
+  --text-400: hsl(0, 0%, 60%);
+  --text-500: hsl(0, 0%, 50%);
+  --text-600: hsl(0, 0%, 40%);
+  --text-700: hsl(0, 0%, 30%);
+  --text-800: hsl(0, 0%, 20%);
+  --text-900: hsl(0, 0%, 10%);
+  --text-950: hsl(0, 0%, 5%);
+
+
 
   --static7: rgba(0, 0, 0, 0.1);
+
+  --linearPrimarySecondary: linear-gradient(#005461, #01858e);
+  --linearPrimaryAccent: linear-gradient(#005461, #00b8b5);
+  --linearSecondaryAccent: linear-gradient(#01858e, #00b8b5);
+  --radialPrimarySecondary: radial-gradient(#005461, #01858e);
+  --radialPrimaryAccent: radial-gradient(#005461, #00b8b5);
+  --radialSecondaryAccent: radial-gradient(#01858e, #00b8b5);
+
 
   --font-scale: 1.333;
   --p: 1rem;
@@ -48,7 +78,13 @@ main {
   background-color: var(--background);
   display: grid;
 
+
+  grid-template-rows: auto 1fr;
+
+
   justify-items: center;
+  padding: 2em;
+  gap: 10em;
 }
 
 footer {
@@ -166,12 +202,159 @@ p {
 .download-button {
   text-decoration: none;
   padding: 0.25em 0.5em;
-  background-color: var(--secondary);
+  background: var(--linearSecondaryAccent);
   color: var(--background);
   font-size: var(--h3);
   border-radius: 0.5em;
   display: inline-block;
+  text-align: center;
   z-index: 2;
+}
+
+.download-button:hover {
+  background: var(--linearPrimarySecondary)
+}
+
+
+
+.title-main {
+  display: grid;
+  width: 80vw;
+
+  grid-template-colums: auto auto;
+
+  justify-items: center;
+  align-items: center;
+
+  column-gap: 0.5em;
+
+  grid-template-areas:
+  "box-1 box-3"
+  "box-2 box-3";
+
+}
+
+.title-main h1 {
+  font-size: var(--h1);
+  font-family: "Intern", "sans-serif";
+  font-weight: 700;
+  color: var(--text);
+  white-space: nowrap;
+}
+
+.title-main p {
+  font-size: var(--p);
+  color: var(--text);
+  padding-left: 0.25em;
+  width: 80%;
+  color: var(--secondary);
+}
+
+.title-main a {
+
+}
+
+.title-main img {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  padding-left: 2em;
+}
+
+
+.app_example_grid {
+  display: grid;
+  width: 80vw;
+  grid-template-colums: auto auto;
+  grid-template-rows: auto auto;
+  justify-items: center;
+  align-items: center;
+  gap: 5em;
+  padding-right: 5em;
+
+}
+
+.app_example_grid h3 {
+  font-size: var(--h3);
+  color: var(--text);
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+  text-align: start;
+
+  padding-top: 3em;
+  background: var(--linearSecondaryAccent);
+  background-clip: text;
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent
+}
+
+.app_example_grid div {
+  grid-column: 2 / 3;
+  grid-row: 1 / 3;
+
+}
+.app_example_grid img {
+  width: 100%;
+  max-width: 450px;
+}
+
+
+
+.carousel {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-areas: "stack";
+  align-items: center;
+}
+
+.carousel ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  grid-area: stack;
+}
+
+.carousel-button {
+  grid-area: stack;
+  background: none;
+  border: none;
+  font-size: var(--h3);
+  z-index: 2; 
+  cursor: pointer;
+  text-align: center;
+  padding: 0 0.25em;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+
+.carousel-button:hover,.carousel-button:focus {
+  color: white;
+  background-color: rbga(0, 0, 0, 0.2);
+}
+
+.carousel-button.prev {
+  justify-self: left;
+}
+.carousel-button.next {
+  justify-self: right;
+}
+
+.slide {
+  display: none;
+}
+
+.slide > img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+
+}
+
+.slide[data-active] {
+  display: block;
 }
 
 
@@ -179,15 +362,12 @@ p {
 
 
 
-
-
-
-
-
-
-
-
 @media screen and (max-width: 900px) {
+  :root {
+    --p: 0.7em;
+  }
+
+
   .page-header nav {
     position: fixed;
     top: 0;
@@ -248,6 +428,24 @@ p {
   .page-header nav ul li a:hover {
     outline: none;
     background-color: transparent;
+  }
+
+
+
+  .title-main {
+    width: 90vw;
+
+    grid-template-colums: auto;
+
+    justify-items: center;
+    align-items: center;
+
+    column-gap: 0.5em;
+
+    grid-template-areas:
+    "box-1"
+    "box-2"
+    "box-3";
   }
 
 }

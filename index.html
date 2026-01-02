@@ -30,14 +30,26 @@
 
     <!-- MAIN --------------------------------------------------------------->
     <main>
-      <section>
-        <h2>Nautic Map</h2>
-        <p>Free Nautic Map for android devices</p>
-        <a class="download-button" href="download.html">Download</a>
+      <section class=title-main>
+        <div style="grid-area: box-1; display: flex; flex-direction: column;">
+          <h1>Nautic Map</h1>
+          <p>Free and Open Source map for android devices</p>
+        </div>
+        <a class="download-button" href="download.html" style="grid-area: box-2">Download</a>
+        <img src="img//logo/Logo_Transparent.png" alt="title image" style="grid-area: box-3">
       </section>
-      <section>
-        <img src="" alt="Image of Nautic Map on android device" >
-        <p>...</p>
+
+      <section class="app_example_grid">
+        <h3>Plan custom routes and track your position with GPS tracking</h3>
+        <div class="carousel" data-carousel>
+            <button class="carousel-button prev" data-carousel-button="prev">🠈</button>
+            <button class="carousel-button next" data-carousel-button="next">🠊</button>
+          <ul data-slides>
+            <li class="slide" data-active><img src="img/app_examples/app_example_1.jpg" alt="app_example_1"></li>
+            <li class="slide"><img src="img/app_examples/app_example_2.jpg" alt="app_example_2"></li>
+            <li class="slide"><img src="img/app_examples/app_example_3.jpg" alt="app_example_3"></li>
+          </ul>
+        </div>
       </section>
     </main>
 
@@ -59,6 +71,28 @@
   function openCloseSidebar() {
     navbar.classList.toggle("show")
   }
+
+  const button = document.querySelectorAll("[data-carousel-button]")
+  button.forEach(button => {
+    button.addEventListener("click", () => {
+      const offset = button.dataset.carouselButton === "next" ? 1 : -1
+      const slides = button.closest("[data-carousel]").querySelector("[data-slides]")
+
+      const activeSlide = slides.querySelector("[data-active]")
+      let newIndex = [...slides.children].indexOf(activeSlide) + offset
+
+      if (newIndex < 0) {
+        newIndex = slides.children.length - 1
+      }
+      if (newIndex >= slides.children.length) {
+        newIndex = 0
+      }
+
+      slides.children[newIndex].dataset.active = true
+      delete activeSlide.dataset.active
+    })
+  })
+
 
   </script>
 
