@@ -67,6 +67,22 @@
 
 }
 
+.darkmode {
+--text: #ffffff;
+--background: #0a0a0a;
+--primary: #9ef2ff;
+--secondary: #71f5fe;
+--accent: #47fffc;
+
+--linearPrimarySecondary: linear-gradient(#9ef2ff, #71f5fe);
+--linearPrimaryAccent: linear-gradient(#9ef2ff, #47fffc);
+--linearSecondaryAccent: linear-gradient(#71f5fe, #47fffc);
+--radialPrimarySecondary: radial-gradient(#9ef2ff, #71f5fe);
+--radialPrimaryAccent: radial-gradient(#9ef2ff, #47fffc);
+--radialSecondaryAccent: radial-gradient(#71f5fe, #47fffc);
+
+}
+
 body {
   min-height: 100vh;
   margin: 0;
@@ -76,6 +92,7 @@ body {
 
 main {
   background-color: var(--background);
+  color: var(--text);
   display: grid;
 
 
@@ -90,16 +107,15 @@ main {
 footer {
 
   background-color: var(--background);
-  display: flex;
+  display: grid;
+  grid-template-rows: 1fr 1fr;
 
-  justify-content: space-between;
-  align-items: center;
-
-  padding-left: 20px;
-  padding-right: 20px;
+  padding-left: 1em;
+  padding-right: 1em;
   min-height: 70px;
 
-  border-top: 1px solid var(--static7)
+  border-top: 1px solid var(--static7);
+  color: var(--text);
 }
 
 h1 {
@@ -153,6 +169,7 @@ p {
 
 .page-header nav ul {
   list-style: none;
+  align-items: center;
   display: flex;
 }
 .page-header nav ul a {
@@ -164,8 +181,6 @@ p {
   border-radius: 12px;
 
   padding: 8px;
-  padding-top: 5px;
-  padding-bottom: 5px;
 }
 
 .page-header nav ul a:hover {
@@ -195,6 +210,34 @@ p {
   top: 70px;
   z-index: 9;
   display: none;
+}
+
+#theme-switch {
+  height: var(--h3);
+  width: var(--h3);
+  padding: 0;
+  margin-left: 8px;
+  border-radius: 50%;
+  background-color: var(--background);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid var(--text)
+}
+
+#theme-switch svg {
+  fill: var(--primary);
+}
+
+#theme-switch svg:last-child {
+  display: none;
+}
+
+.darkmode #theme-switch svg:first-child {
+  display: none;
+}
+.darkmode #theme-switch svg:last-child {
+  display: block;
 }
 
 
@@ -306,7 +349,14 @@ p {
   display: grid;
   grid-template-areas: "stack";
   align-items: center;
+
+
+  border-radius: 16px;
+  border: 4px solid transparent;
+  background: var(--radialPrimarySecondary);
+
 }
+
 
 .carousel ul {
   margin: 0;
@@ -350,6 +400,7 @@ p {
   height: 100%;
   object-fit: cover;
   object-position: center;
+  border-radius: 12px;
 
 }
 
@@ -357,6 +408,21 @@ p {
   display: block;
 }
 
+
+.footer-links {
+  display: flex;
+  padding-top: 0.25em;
+
+  justify-content: space-between;
+  align-items: center;
+
+}
+
+.github-icon {
+  height: var(--h3);
+  width: auto;
+  display: block;
+}
 
 
 
@@ -436,6 +502,13 @@ p {
     background-color: transparent;
   }
 
+  #theme-switch {
+    height: var(--h1);
+    width: var(--h1);
+    margin-left: 3em;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+  }
 
 
   .title-main {
@@ -484,7 +557,7 @@ p {
     justify-items: center;
     align-items: center;
     gap: 2em;
-    padding: 0em;
+    padding: 2em;
 
   }
 
@@ -496,7 +569,7 @@ p {
   .app_example_grid div {
     grid-column: 1 / 2;
     grid-row: 2 / 3;
-    padding: 2em;
+    /*padding: 2em;*/
 
   }
   .carousel-button {
