@@ -9,9 +9,19 @@
     <link rel="stylesheet" href="css/style.css">
     <script type="text/javascript" src="js/main.js" defer>
       if (localStorage.getItem('darkmode') === 'active') {
-        document.getElement.classList.add('darkmode');
+        document.documentElement.classList.add('darkmode');
       }
     </script>
+    <style>
+    main {
+      gap: 10em;
+    }
+    @media screen and (max-width: 768px) {
+    main {
+    gap: 1em;
+    }
+    }
+    </style>
   </head>
   <body>
     <!-- HEADER --------------------------------------------------------------->

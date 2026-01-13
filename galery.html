@@ -8,10 +8,55 @@
     <link rel="icon" href="img/logo/Logo_Transparent.png" type="image/png">
     <link rel="stylesheet" href="css/style.css">
     <script type="text/javascript" src="js/main.js" defer>
-      if (localStorage.getItem('darkmode') === 'active') {
-        document.getElement.classList.add('darkmode');
-      }
+    if (localStorage.getItem('darkmode') === 'active') {
+      document.documentElement.classList.add('darkmode');
+    }
     </script>
+    <style>
+    main {
+      gap: 1em;
+    }
+    .grid {
+    display: grid;
+    width: 80vw;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto;
+    gap: 1em;
+    padding: 20px;
+    }
+
+    .grid-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+    border: 2px solid var(--secondary);
+    border-radius: 12px;
+    height: 300px;
+    overflow: hidden;
+    }
+
+    .grid-item img {
+    width: 100%;
+    height: 85%;
+    object-fit: cover;
+    border-radius: 10px;
+    display: block;
+    margin-bottom: 10px;
+    border-bottom: 3px solid var(--secondary);
+    }
+
+    @media screen and (min-width: 769px) and (max-width: 1024px) {
+    .grid {
+    grid-template-columns: 1fr 1fr;
+    }
+    }
+    @media screen and (max-width: 768px) {
+    .grid {
+    grid-template-columns: 1fr;
+    }
+    }
+    </style>
   </head>
   <body>
     <!-- HEADER --------------------------------------------------------------->
@@ -42,7 +87,34 @@
 
     <!-- MAIN --------------------------------------------------------------->
     <main>
+      <h3 style="padding: 1em;">Examples of boats that are the perfect fit for out app</h3>
+       <div class="grid">
+        <div class="grid-item">
+          <img src="img/boat_images/big_rib.png" alt="big rib boat">
+          <p>Big inflatable boat</p>
+        </div>
+        <div class="grid-item">
+          <img src="img/boat_images/small_rib.png" alt="small rib boat">
+          <p>Small inflatable boat</p>
+        </div>
+        <div class="grid-item">
+          <img src="img/boat_images/small_boat.png" alt="small boat">
+          <p>Small boat</p>
+        </div>
+        <div class="grid-item">
+          <img src="img/boat_images/yacht.png" alt="big yacht">
+          <p>Big yacht</p>
+        </div>
+        <div class="grid-item">
+          <img src="img/boat_images/small_sailboat.png" alt="small sailboat">
+          <p>Small sailboat</p>
+        </div>
+        <div class="grid-item">
+          <img src="img/boat_images/sail_boat.png" alt="sail_boat">
+          <p>Sailboat</p>
+        </div>
         
+      </div> 
     </main>
 
     <!-- FOOTER --------------------------------------------------------------->
