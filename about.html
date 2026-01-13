@@ -12,6 +12,42 @@
         document.documentElement.classList.add('darkmode');
       }
     </script>
+<style>
+/* Flex container to align video and text side by side */
+.video-text-container {
+  display: flex;
+  gap: 20px; /* Space between video and text */
+  align-items: flex-start; /* Align top of video and text */
+  flex-wrap: wrap; /* Wrap on smaller screens */
+  margin-top: 10px; /* Space between heading and flex container */
+}
+
+/* Video container styling */
+.video-container {
+  flex: 0 0 auto; /* Video keeps its size */
+  max-width: 640px;
+border: 4px solid var(--secondary);
+border-radius: 8px;
+}
+
+/* Make video responsive */
+.video-container video {
+  width: 100%;
+  height: auto;
+}
+
+/* Text container styling */
+.text-container {
+  flex: 1 1 300px; /* Text takes remaining space but can shrink */
+  padding: 1em;
+  max-width: 500px;
+  border: 4px solid var(--secondary);
+    border-radius: 24px;
+}
+.text-container p {
+  margin-bottom: 15px; /* Adjust gap as needed */
+}
+</style>
   </head>
   <body>
     <!-- HEADER --------------------------------------------------------------->
@@ -41,25 +77,29 @@
 
     <!-- MAIN --------------------------------------------------------------->
     <main>
-        <section>
-            <div>
-                <h2>About Nautic App</h2>
-                <p>Nautic App is free nautic map for android devices made for sailers to help calculate their thrips in Adriatic Sea</p>
-          <p>text</p>
-          <p>tetx22</p>
-            </div>
-            <figure>
-                <div>
-                    <video controls preload="metadata">
-                        <source src="video/highway.mp4" type="video/mp4">
-                        Browser not supported
-                    </video>
+  <section>
+    <!-- Heading on top -->
+    <h2>About Nautic App</h2>
 
-                    <!--<iframe width="560" height="315" src="https://www.youtube.com/watch?v=PP6Xp7J1Blg"></iframe>-->
-                </div>
-                <figcaption>Example of trip calculation</figcaption>
-            </figure>
-        </section>
+    <!-- Flex container for video and text -->
+    <div class="video-text-container">
+      <!-- Video on the left -->
+      <figure class="video-container">
+        <video controls preload="metadata" width="640" height="360">
+          <source src="video/aboutvideo.mp4" type="video/mp4">
+          Browser not supported
+        </video>
+        <figcaption>Example of out website</figcaption>
+      </figure>
+
+      <!-- Text on the right -->
+      <div class="text-container">
+        <p>Nautic App is a free nautic map for Android devices made for sailors to help calculate their trips in the Adriatic Sea.</p>
+        <p>We are using Open Street Maps for out map data.</p>
+        <p>Out team is commited to delivering the best user experience you can get.</p>
+      </div>
+    </div>
+  </section>
     </main>
 
     <!-- FOOTER --------------------------------------------------------------->
