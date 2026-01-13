@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Contact us about anything you want related to NauticMap">
     <title>Contact - NauticApp</title>
-    <link rel="icon" href="img/logo/Logo_Transparent.png" type="image/png">
+    <link rel="icon" href="favicon.png" type="image/png">
     <link rel="stylesheet" href="css/style.css">
     <script type="text/javascript" src="js/main.js" defer>
       if (localStorage.getItem('darkmode') === 'active') {
@@ -41,24 +41,27 @@
 
     <!-- MAIN --------------------------------------------------------------->
     <main>
-        <form class="card" action="https://formsubmit.co/fdonoval@vvg.hr" method="POST">
-    <input type="hidden" name="_captcha" value="false">
-    <input type="hidden" name="_template" value="table">
-    <input type="hidden" name="_next" value="https://filipdonoval.github.io/WebAplikacijeProjekt/thankyou.html">
-      <h2>Pišite nam</h2>
-      <label for="ime">Ime*</label><input id="ime" name="ime" class="input" required>
-      <label for="prezime">Prezime*</label><input id="prezime" name="prezime" class="input" required>
-      <label for="email">Email*</label><input id="email" name="email" type="email" class="input" required>
-      <label for="drzava">Država*</label>
-      <select id="drzava" name="drzava" required>
-        <option value="">Odaberite...</option>
-        <option>Hrvatska</option><option>Slovenija</option><option>BiH</option>
-        <option>Srbija</option><option>Njemačka</option>
-      </select>
-      <label><input type="checkbox" id="newsletter" name="newsletter"> Želim primati newsletter</label>
-      <label for="poruka">Poruka*</label><textarea id="poruka" name="poruka" class="input" required></textarea>
-      <button class="btn" type="submit">Pošalji</button>
-    </form>
+      <form class="card" action="https://formsubmit.co/fdonoval@vvg.hr" method="POST">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_next" value="https://filipdonoval.github.io/WebAplikacijeProjekt/thankyou.html">
+        <h2>Contact Us</h2>
+        <label for="firstName">First Name*</label><input id="firstName" name="firstName" class="input" required>
+        <label for="lastName">Last Name*</label><input id="lastName" name="lastName" class="input" required>
+        <label for="email">Email*</label><input id="email" name="email" type="email" class="input" required>
+        <label for="country">Country*</label>
+        <select id="country" name="country" required>
+          <option value="">Select...</option>
+          <option>Croatia</option>
+          <option>Slovenia</option>
+          <option>Bosnia and Herzegovina</option>
+          <option>Serbia</option>
+          <option>Germany</option>
+        </select>
+        <label><input type="checkbox" id="newsletter" name="newsletter"> I want to receive the newsletter</label>
+        <label for="message">Message*</label><textarea id="message" name="message" class="input" required></textarea>
+        <button class="btn" type="submit">Send</button>
+      </form>
     </main>
 
     <!-- FOOTER --------------------------------------------------------------->
