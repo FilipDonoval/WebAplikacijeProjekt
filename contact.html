@@ -1,38 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Contact us about anything you want related to NauticMap">
     <title>Contact - NauticApp</title>
+    <link rel="icon" href="img/logo/Logo_Transparent.png" type="image/png">
     <link rel="stylesheet" href="css/style.css">
-</head>
+    <script type="text/javascript" src="js/main.js" defer></script>
+  </head>
+  <body>
     <!-- HEADER --------------------------------------------------------------->
     <header class="page-header">
-        <a href="index.html">NauticApp</a>
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="updates.html">Updates</a>
-            <a href="galery.html">Galery</a>
-            <a href="download.html">Download</a>
-            <a href="about.html">About</a>
-            <a href="contact.html">Contact</a>
-        </nav>
+      <a href="index.html">NauticApp</a>
+      <button class="open-sidebar" onClick=openCloseSidebar()>☰</button>
+      <nav id="navbar">
+        <ul>
+          <li><button class="close-sidebar" onClick=openCloseSidebar() >X</button></li>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="updates.html">Updates</a></li>
+          <li><a href="galery.html">Galery</a></li>
+          <li><a href="download.html">Download</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li>
+            <button id="theme-switch">
+              <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M480-120q-150 0-255-105T120-480q0-150 105-255t255-105q14 0 27.5 1t26.5 3q-41 29-65.5 75.5T444-660q0 90 63 153t153 63q55 0 101-24.5t75-65.5q2 13 3 26.5t1 27.5q0 150-105 255T480-120Z"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M480-280q-83 0-141.5-58.5T280-480q0-83 58.5-141.5T480-680q83 0 141.5 58.5T680-480q0 83-58.5 141.5T480-280ZM200-440H40v-80h160v80Zm720 0H760v-80h160v80ZM440-760v-160h80v160h-80Zm0 720v-160h80v160h-80ZM256-650l-101-97 57-59 96 100-52 56Zm492 496-97-101 53-55 101 97-57 59Zm-98-550 97-101 59 57-100 96-56-52ZM154-212l101-97 55 53-97 101-59-57Z"/></svg>
+            </button>
+          </li>
+        </ul>
+      </nav>
+
+      <div id="overlay" onClick=openCloseSidebar()></div>
     </header>
 
     <!-- MAIN --------------------------------------------------------------->
     <main>
-        
+        <form class="card" action="https://formsubmit.co/fdonoval@vvg.hr" method="POST">
+    <input type="hidden" name="_captcha" value="false">
+    <input type="hidden" name="_template" value="table">
+    <input type="hidden" name="_next" value="https://patrikdegac.github.io/projekt/hvala.html">
+      <h2>Pišite nam</h2>
+      <label for="ime">Ime*</label><input id="ime" name="ime" class="input" required>
+      <label for="prezime">Prezime*</label><input id="prezime" name="prezime" class="input" required>
+      <label for="email">Email*</label><input id="email" name="email" type="email" class="input" required>
+      <label for="drzava">Država*</label>
+      <select id="drzava" name="drzava" required>
+        <option value="">Odaberite...</option>
+        <option>Hrvatska</option><option>Slovenija</option><option>BiH</option>
+        <option>Srbija</option><option>Njemačka</option>
+      </select>
+      <label><input type="checkbox" id="newsletter" name="newsletter"> Želim primati newsletter</label>
+      <label for="poruka">Poruka*</label><textarea id="poruka" name="poruka" class="input" required></textarea>
+      <button class="btn" type="submit">Pošalji</button>
+    </form>
     </main>
 
     <!-- FOOTER --------------------------------------------------------------->
     <footer>
+      <div class="footer-links">
         <div>
-            <strong>Nautic App</strong>
-            <p>Free nautic map</p>
+          <strong>Nautic App</strong>
+          <p>Free nautic map</p>
         </div>
-        <div>
-            <a href="https://github.com/FilipDonoval/NauticMap">GitHub</a>
-        </div>
-    </footer>
 
+        <a href="https://github.com/FilipDonoval/NauticMap" target="_blank" rel="noopener noreferrer">
+          <svg class="github-icon" viewBox="0 0 98 96" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M48.854 0C21.839 0 0 22 0 49.217c0 21.756 13.993 40.172 33.405 46.69 2.427.49 3.316-1.059 3.316-2.362 0-1.141-.08-5.052-.08-9.127-13.59 2.934-16.42-5.867-16.42-5.867-2.184-5.704-5.42-7.17-5.42-7.17-4.448-3.015.324-3.015.324-3.015 4.934.326 7.523 5.052 7.523 5.052 4.367 7.496 11.404 5.378 14.235 4.074.404-3.178 1.699-5.378 3.074-6.6-10.839-1.141-22.243-5.378-22.243-24.283 0-5.378 1.94-9.778 5.014-13.2-.485-1.222-2.184-6.275.486-13.038 0 0 4.125-1.304 13.426 5.052a46.97 46.97 0 0 1 12.214-1.63c4.125 0 8.33.571 12.213 1.63 9.302-6.356 13.427-5.052 13.427-5.052 2.67 6.763.97 11.816.485 13.038 3.155 3.422 5.015 7.822 5.015 13.2 0 18.905-11.404 23.06-22.324 24.283 1.78 1.548 3.316 4.481 3.316 9.126 0 6.6-.08 11.897-.08 13.526 0 1.304.89 2.853 3.316 2.364 19.412-6.52 33.405-24.935 33.405-46.691C97.707 22 75.788 0 48.854 0z" fill="#24292f"/></svg>
+        </a>
+      </div>
+      <small style="align-self: center; justify-self: center;">© <span id="cpyear"></span> NauticMap • All rights reserved.</small>
+    </footer>
+  </body>
 </html>
