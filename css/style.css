@@ -33,6 +33,8 @@
   --secondary: hsl(184, 99%, 28%);
   --accent: hsl(179, 100%, 36%);
 
+  --background-light: hsl(0, 0%, 99%);
+
   --text-50: hsl(0, 0%, 95%);
   --text-100: hsl(0, 0%, 90%);
   --text-200: hsl(0, 0%, 80%);
@@ -47,7 +49,7 @@
 
 
 
-  --static7: rgba(0, 0, 0, 0.1);
+  --static7: hsl(0, 0%, 85%);
 
   --linearPrimarySecondary: linear-gradient(#005461, #01858e);
   --linearPrimaryAccent: linear-gradient(#005461, #00b8b5);
@@ -68,18 +70,21 @@
 }
 
 .darkmode {
---text: #ffffff;
---background: #0a0a0a;
---primary: #9ef2ff;
---secondary: #71f5fe;
---accent: #47fffc;
+  --text: #ffffff;
+  --background: #0a0a0a;
+  --primary: #9ef2ff;
+  --secondary: #71f5fe;
+  --accent: #47fffc;
+  --background-light: hsl(0, 0%, 10%);
 
---linearPrimarySecondary: linear-gradient(#9ef2ff, #71f5fe);
---linearPrimaryAccent: linear-gradient(#9ef2ff, #47fffc);
---linearSecondaryAccent: linear-gradient(#71f5fe, #47fffc);
---radialPrimarySecondary: radial-gradient(#9ef2ff, #71f5fe);
---radialPrimaryAccent: radial-gradient(#9ef2ff, #47fffc);
---radialSecondaryAccent: radial-gradient(#71f5fe, #47fffc);
+  --static7: hsl(0, 0%, 20%);
+
+  --linearPrimarySecondary: linear-gradient(#9ef2ff, #71f5fe);
+  --linearPrimaryAccent: linear-gradient(#9ef2ff, #47fffc);
+  --linearSecondaryAccent: linear-gradient(#71f5fe, #47fffc);
+  --radialPrimarySecondary: radial-gradient(#9ef2ff, #71f5fe);
+  --radialPrimaryAccent: radial-gradient(#9ef2ff, #47fffc);
+  --radialSecondaryAccent: radial-gradient(#71f5fe, #47fffc);
 
 }
 
@@ -476,7 +481,7 @@ p {
   main {
     gap: 2em;
     padding: 0;
-    padding-top: 0.5em;
+    padding-top: 1em;
   }
 
 
@@ -583,7 +588,8 @@ p {
     width: 80%;
     max-width: 600px;
     height: auto;
-    padding-left: 2em;
+    padding-left: 0;
+    padding-top: 1em;
   }
 
   .app_example_grid img {
@@ -610,7 +616,6 @@ p {
   .app_example_grid div {
     grid-column: 1 / 2;
     grid-row: 2 / 3;
-    /*padding: 2em;*/
 
   }
   .carousel-button {
@@ -620,7 +625,6 @@ p {
 }
 
 @media screen and (min-width: 769px) and (max-width: 1024px) {
-/*@media screen and (max-width: 900px) {*/
   :root {
     --p: 0.7em;
   }
@@ -734,7 +738,8 @@ p {
     width: 80%;
     max-width: 600px;
     height: auto;
-    padding-left: 2em;
+    padding-left: 0;
+    padding-top: 1em;
   }
 
   .app_example_grid img {
