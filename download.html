@@ -16,6 +16,7 @@
 
     main {
     gap: 2em;
+    align-items: start;
     }
 
     main section {
@@ -29,12 +30,13 @@
     }
 
     .apple-title {
-    color: #1D1D1F;
+    color: var(--text);
     }
 
     .grid {
     width: 80vw;
     display: grid;
+    align-content: start;
     gap: 1em;
     justify-items: center;
     align-items: center;
@@ -70,6 +72,12 @@
     flex-direction: column;
     align-self: center;
     justify-self: center;
+    .android-title {
+    text-align: center;
+    }
+    .apple-title {
+    text-align: center;
+    }
     }
 
     </style>
@@ -115,8 +123,8 @@
           <img style="height: var(--h1); width: auto; align-self: center; padding: 0 1em;" src="img/apple.png" alt="android image">
           <h2 class="apple-title">Iphone Version</h2>
         </div>
- <p class="info">Coming soon...</p>
-        <a class="download-button" style="grid-area: box-4; background: rgb(30, 30, 30); cursor: not-allowed; pointer-events: none;" aria-disabled="true">Download</a>
+        <p class="info">Coming soon...</p>
+        <a class="download-button" style="grid-area: box-4; background: rgb(80, 80, 80); cursor: not-allowed; pointer-events: none;" aria-disabled="true">Download</a>
       </section>
     </main>
 

@@ -8,46 +8,73 @@
     <link rel="icon" href="favicon.png" type="image/png">
     <link rel="stylesheet" href="css/style.css">
     <script type="text/javascript" src="js/main.js" defer>
-      if (localStorage.getItem('darkmode') === 'active') {
-        document.documentElement.classList.add('darkmode');
-      }
+    if (localStorage.getItem('darkmode') === 'active') {
+      document.documentElement.classList.add('darkmode');
+    }
     </script>
-<style>
-/* Flex container to align video and text side by side */
-.video-text-container {
-  display: flex;
-  gap: 20px; /* Space between video and text */
-  align-items: flex-start; /* Align top of video and text */
-  flex-wrap: wrap; /* Wrap on smaller screens */
-  margin-top: 10px; /* Space between heading and flex container */
-}
+    <style>
+    .video-text-container {
+    display: grid;
 
-/* Video container styling */
-.video-container {
-  flex: 0 0 auto; /* Video keeps its size */
-  max-width: 640px;
-border: 4px solid var(--secondary);
-border-radius: 8px;
-}
+    grid-template-areas:
+    "video text";
+    align-items: center;
+    justify-items: center;
+    }
 
-/* Make video responsive */
-.video-container video {
-  width: 100%;
-  height: auto;
-}
+    .video-container {
+    max-width: 640px;
+    border: 3px solid var(--secondary);
+    border-radius: 8px;
+    }
 
-/* Text container styling */
-.text-container {
-  flex: 1 1 300px; /* Text takes remaining space but can shrink */
-  padding: 1em;
-  max-width: 500px;
-  border: 4px solid var(--secondary);
+    .video-container video {
+    width: 100%;
+    height: auto;
+    }
+
+    .text-container {
+    padding: 1em;
+    border: 3px solid var(--secondary);
+    max-width: 90%;
     border-radius: 24px;
-}
-.text-container p {
-  margin-bottom: 15px; /* Adjust gap as needed */
-}
-</style>
+    }
+    .text-container p {
+    margin-bottom: 15px;
+    }
+
+    .text-container h2 {
+    margin-bottom: 10px;
+    }
+    .text-container h5 {
+    margin-bottom: 10px;
+    }
+
+
+    @media screen and (min-width: 769px) and (max-width: 1024px) {
+    
+    .video-text-container {
+    gap: 1em;
+
+grid-template-areas:
+    "text"
+    "video";
+    }
+    }
+    @media screen and (max-width: 768px) {
+    main {
+    padding: 1em;
+    }
+    .video-text-container {
+    gap: 1em;
+    
+
+grid-template-areas:
+    "text"
+    "video";
+    }
+    }
+    </style>
   </head>
   <body>
     <!-- HEADER --------------------------------------------------------------->
@@ -78,27 +105,24 @@ border-radius: 8px;
     <!-- MAIN --------------------------------------------------------------->
     <main>
   <section>
-    <!-- Heading on top -->
-    <h2>About Nautic App</h2>
 
-    <!-- Flex container for video and text -->
-    <div class="video-text-container">
-      <!-- Video on the left -->
-      <figure class="video-container">
-        <video controls preload="metadata" width="640" height="360">
-          <source src="video/aboutvideo.mp4" type="video/mp4">
-          Browser not supported
-        </video>
-        <figcaption>Example of out website</figcaption>
-      </figure>
+        <div class="video-text-container" style="grid-area: video">
+          <figure class="video-container">
+            <video controls preload="metadata" width="640" height="360">
+              <source src="video/aboutvideo.mp4" type="video/mp4">
+              Browser not supported
+            </video>
+            <figcaption>Example of out website</figcaption>
+          </figure>
 
-      <!-- Text on the right -->
-      <div class="text-container">
-        <p>Nautic App is a free nautic map for Android devices made for sailors to help calculate their trips in the Adriatic Sea.</p>
-        <p>We are using Open Street Maps for out map data.</p>
-        <p>Out team is commited to delivering the best user experience you can get.</p>
-      </div>
-    </div>
+          <div class="text-container" style="grid-area: text">
+            <h2>About Nautic App</h2>
+            <h5>Our Mission</h5>
+            <p>Nautic App is a free nautic map for Android devices made for sailors to help calculate their trips in the Adriatic Sea.</p>
+            <p>We are using Open Street Maps for out map data.</p>
+            <p>Out team is commited to delivering the best user experience you can get.</p>
+          </div>
+        </div>
   </section>
     </main>
 
