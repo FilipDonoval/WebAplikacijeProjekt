@@ -29,7 +29,7 @@
 
     .release-item {
     flex: 1 1 auto;
-    max-width: 70vw;
+    width: 60vw;
     align-self: flex-start;
     border: 1px solid var(--secondary);
     border-radius: 8px;
@@ -43,6 +43,14 @@
     .release-item:hover {
     box-shadow: 0 6px 18px rgba(0,0,0, 0.1);
     transform: translateY(-2px);
+    }
+
+    .release-item h2 {
+    text-align: center;
+    }
+
+    .release-item p.date {
+    text-align: end;
     }
 
     .release-item p.details {
@@ -75,12 +83,19 @@
     }
 
     @media screen and (min-width: 769px) and (max-width: 1024px) {
+    .release-item {
+    width: 90vw;
+    }
     }
 
 
     @media screen and (max-width: 768px) {
     main {
     padding: 2em 1em;
+    }
+
+    .release-item {
+    width: 85vw;
     }
 
     .release-item p {
@@ -162,6 +177,7 @@
 
       const p1 = document.createElement('p')
       p1.textContent = date
+      p1.classList.add('date')
 
       const p2 = document.createElement('p')
       p2.textContent = json[i].body
