@@ -58,6 +58,22 @@
     margin-top: 12px;
     }
 
+    #loadMoreButton {
+    padding: 0.25em 0.5em;
+    border: none;
+    background: var(--linearSecondaryAccent);
+    color: var(--background);
+    font-size: var(--h3);
+    border-radius: 0.5em;
+    display: inline-block;
+    text-align: center;
+    z-index: 2;
+    }
+
+    #loadMoreButton:hover {
+    background: var(--linearPrimarySecondary)
+    }
+
     @media screen and (min-width: 769px) and (max-width: 1024px) {
     }
 
@@ -129,8 +145,8 @@
 
   <script>
   async function getReleasesNames(curPage) {
-    const response = await fetch('https://api.github.com/repos/FreeCAD/FreeCAD/releases?per_page=2&page=' + curPage)
-    //const response = await fetch('https://api.github.com/repos/FilipDonoval/NauticMap/releases?per_page2&page=' + curPage)
+    //const response = await fetch('https://api.github.com/repos/FreeCAD/FreeCAD/releases?per_page=2&page=' + curPage)
+    const response = await fetch('https://api.github.com/repos/FilipDonoval/NauticMap/releases?per_page2&page=' + curPage)
     const json = await response.json()
 
     const releases = []
