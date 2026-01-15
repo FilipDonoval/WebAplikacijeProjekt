@@ -430,42 +430,7 @@ p {
 
 
 
-#releasesText ul {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  gap: 16px;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-.release-item {
-  flex: 1 1 auto;
-  max-width: 70vw;
-  align-self: flex-start;
-  border: 1px solid var(--secondary);
-  border-radius: 8px;
-  padding: 16px;
-  cursor: pointer;
-  background: var(--background);
-  transition: box-shadow 0.2s ease, transform 0.2s ease;
-  overflow: hidden;
-}
-.release-item:hover {
-  box-shadow: 0 6px 18px rgba(0,0,0, 0.1);
-  transform: translateY(-2px);
-}
-.release-item p.details {
-  max-height: 0;
-  overflow: hidden;
-  opacity: 0;
-  transition: max-height 0.3s ease, opacity 0.3s ease;
-  margin-top: 0;
-}
-.release-item.open p.details {
-  opacity: 1;
-  margin-top: 12px;
-}
+
 
 
 

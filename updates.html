@@ -8,14 +8,71 @@
     <link rel="icon" href="favicon.png" type="image/png">
     <link rel="stylesheet" href="css/style.css">
     <script type="text/javascript" src="js/main.js" defer>
-      if (localStorage.getItem('darkmode') === 'active') {
-        document.documentElement.classList.add('darkmode');
-      }
+    if (localStorage.getItem('darkmode') === 'active') {
+      document.documentElement.classList.add('darkmode');
+    }
     </script>
     <style>
     main {
     gap: 4em;
     }
+
+    #releasesText ul {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 2em;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    }
+
+    .release-item {
+    flex: 1 1 auto;
+    max-width: 70vw;
+    align-self: flex-start;
+    border: 1px solid var(--secondary);
+    border-radius: 8px;
+    padding: 16px;
+    cursor: pointer;
+    background: var(--background);
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+    overflow: hidden;
+    }
+
+    .release-item:hover {
+    box-shadow: 0 6px 18px rgba(0,0,0, 0.1);
+    transform: translateY(-2px);
+    }
+
+    .release-item p.details {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height 0.3s ease, opacity 0.3s ease;
+    margin-top: 0;
+    }
+
+    .release-item.open p.details {
+    opacity: 1;
+    margin-top: 12px;
+    }
+
+    @media screen and (min-width: 769px) and (max-width: 1024px) {
+    }
+
+
+    @media screen and (max-width: 768px) {
+    main {
+    padding: 2em 1em;
+    }
+
+    .release-item p {
+    font-size: var(--h5);
+    }
+
+    }
+
     </style>
   </head>
   <body>
@@ -46,20 +103,12 @@
 
     <!-- MAIN --------------------------------------------------------------->
     <main>
-        <section>
-            <h1>Updates</h1>
-        </section>
-        <!--<section>
-            <article>
-                <h3>Added manual travel time input</h3>
-                <p>Last change on <a href="https://github.com/FilipDonoval/NauticMap/commit/6c1be7a314662c49ea67c0bd3cb85613dfebf525">github</a></p>
-            </article>
-            <article>
-                <h3>Added buttons to reset trip</h3>
-                <p>Last change on <a href="https://github.com/FilipDonoval/NauticMap/commit/5a33ed3f9b909a0368c3db851e62d1565f611cce">github</a></p>
-            </article>
-        </section>-->
-        <div id="releasesText"></div>
+      <section>
+        <h1>Updates</h1>
+      </section>
+      <div id="releasesText"></div>
+      <button id="loadMoreButton" onClick="updateReleases()">Load more</button>
+      <h4 id="loadedAll" style="display: none;">All releases shown</h4>
     </main>
 
     <!-- FOOTER --------------------------------------------------------------->
@@ -79,10 +128,9 @@
   </body>
 
   <script>
-  async function getReleasesNames() {
-    //https://api.github.com/repos/FreeCAD/FreeCAD/releases?per_page=2&page=2
-    //const response = await fetch('https://api.github.com/repos/FreeCAD/FreeCAD/releases?per_page=5&page=1')
-    const response = await fetch('https://api.github.com/repos/FilipDonoval/NauticMap/releases')
+  async function getReleasesNames(curPage) {
+    const response = await fetch('https://api.github.com/repos/FreeCAD/FreeCAD/releases?per_page=2&page=' + curPage)
+    //const response = await fetch('https://api.github.com/repos/FilipDonoval/NauticMap/releases?per_page2&page=' + curPage)
     const json = await response.json()
 
     const releases = []
@@ -90,8 +138,6 @@
     for (let i = 0; i < json.length; i++) {
       let date = new Date(json[i].published_at)
       date = date.toLocaleDateString('en-GB').replace(/\//g,".");
-      console.log(date)
-      //releases.push(json[i].name + ' ' + date + ' | Info: ' + json[i].body)
 
       const li = document.createElement('li')
 
@@ -123,122 +169,42 @@
 
         if (li.classList.contains('open')) {
           details.style.maxHeight = details.scrollHeight + 'px'
+          li.scrollIntoView({ behavior: "smooth", block: "center"})
+
         } else {
           details.style.maxHeight = null;
         }
       })
 
       releases.push(li)
-
     }
 
+    return releases
+  }
 
 
-    const ul = document.createElement('ul')
+  const ul = document.createElement('ul')
+  let currentPage = 1
+
+  async function updateReleases() {
+    let releases = await getReleasesNames(currentPage)
     releases.forEach(li => {
       ul.appendChild(li)
     })
-    
     document.getElementById('releasesText').appendChild(ul)
 
+    document.querySelector("footer").scrollIntoView({ behavior: "smooth" });
 
-    /*const json = [
-      {
-        "url": "https://api.github.com/repos/FilipDonoval/NauticMap/releases/270941012",
-        "assets_url": "https://api.github.com/repos/FilipDonoval/NauticMap/releases/270941012/assets",
-        "upload_url": "https://uploads.github.com/repos/FilipDonoval/NauticMap/releases/270941012/assets{?name,label}",
-        "html_url": "https://github.com/FilipDonoval/NauticMap/releases/tag/0.1",
-        "id": 270941012,
-        "author": {
-          "login": "FilipDonoval",
-          "id": 102729468,
-          "node_id": "U_kgDOBh-G_A",
-          "avatar_url": "https://avatars.githubusercontent.com/u/102729468?v=4",
-          "gravatar_id": "",
-          "url": "https://api.github.com/users/FilipDonoval",
-          "html_url": "https://github.com/FilipDonoval",
-          "followers_url": "https://api.github.com/users/FilipDonoval/followers",
-          "following_url": "https://api.github.com/users/FilipDonoval/following{/other_user}",
-          "gists_url": "https://api.github.com/users/FilipDonoval/gists{/gist_id}",
-          "starred_url": "https://api.github.com/users/FilipDonoval/starred{/owner}{/repo}",
-          "subscriptions_url": "https://api.github.com/users/FilipDonoval/subscriptions",
-          "organizations_url": "https://api.github.com/users/FilipDonoval/orgs",
-          "repos_url": "https://api.github.com/users/FilipDonoval/repos",
-          "events_url": "https://api.github.com/users/FilipDonoval/events{/privacy}",
-          "received_events_url": "https://api.github.com/users/FilipDonoval/received_events",
-          "type": "User",
-          "user_view_type": "public",
-          "site_admin": false
-        },
-        "node_id": "RE_kwDOP-MxCs4QJjtU",
-        "tag_name": "0.1",
-        "target_commitish": "master",
-        "name": "First Release 0.1",
-        "draft": false,
-        "immutable": false,
-        "prerelease": false,
-        "created_at": "2025-12-17T02:13:18Z",
-        "updated_at": "2025-12-17T02:27:31Z",
-        "published_at": "2025-12-17T02:21:21Z",
-        "assets": [
-          {
-            "url": "https://api.github.com/repos/FilipDonoval/NauticMap/releases/assets/329624564",
-            "id": 329624564,
-            "node_id": "RA_kwDOP-MxCs4Tpav0",
-            "name": "NauticMap-Release-0.1-Android.apk",
-            "label": null,
-            "uploader": {
-              "login": "FilipDonoval",
-              "id": 102729468,
-              "node_id": "U_kgDOBh-G_A",
-              "avatar_url": "https://avatars.githubusercontent.com/u/102729468?v=4",
-              "gravatar_id": "",
-              "url": "https://api.github.com/users/FilipDonoval",
-              "html_url": "https://github.com/FilipDonoval",
-              "followers_url": "https://api.github.com/users/FilipDonoval/followers",
-              "following_url": "https://api.github.com/users/FilipDonoval/following{/other_user}",
-              "gists_url": "https://api.github.com/users/FilipDonoval/gists{/gist_id}",
-              "starred_url": "https://api.github.com/users/FilipDonoval/starred{/owner}{/repo}",
-              "subscriptions_url": "https://api.github.com/users/FilipDonoval/subscriptions",
-              "organizations_url": "https://api.github.com/users/FilipDonoval/orgs",
-              "repos_url": "https://api.github.com/users/FilipDonoval/repos",
-              "events_url": "https://api.github.com/users/FilipDonoval/events{/privacy}",
-              "received_events_url": "https://api.github.com/users/FilipDonoval/received_events",
-              "type": "User",
-              "user_view_type": "public",
-              "site_admin": false
-            },
-            "content_type": "application/vnd.android.package-archive",
-            "state": "uploaded",
-            "size": 1266521564,
-            "digest": "sha256:8c1d32eb280f29693b9aa4c8445fce19c2343dbf5c52d377053cfc7224f301c7",
-            "download_count": 4,
-            "created_at": "2025-12-17T02:25:10Z",
-            "updated_at": "2025-12-17T02:27:31Z",
-            "browser_download_url": "https://github.com/FilipDonoval/NauticMap/releases/download/0.1/NauticMap-Release-0.1-Android.apk"
-          }
-        ],
-        "tarball_url": "https://api.github.com/repos/FilipDonoval/NauticMap/tarball/0.1",
-        "zipball_url": "https://api.github.com/repos/FilipDonoval/NauticMap/zipball/0.1",
-        "body": "Test apk for NauticMap with mbtiles included"
-      }
-    ]*/
+    currentPage += 1
+    releases = await getReleasesNames(currentPage)
 
-    /*
-    console.log(json.length)
-    console.log(json[0].name)
-    console.log(json[0].body)
-    const date = new Date(json[0].published_at)
-    console.log(date.toLocaleDateString('en-GB'))
-    console.log(json)
-
-    document.getElementById("releasesText").innerHTML = json[0].name + ' | Info: ' + json[0].body
-*/
-    //return json[0].name
+    if (releases.length <= 0) {
+      document.getElementById('loadMoreButton').style.display = "none"
+      document.getElementById('loadedAll').style.display = "block"
+    }
   }
 
-  getReleasesNames()
-
+  updateReleases(currentPage)
   </script>
 
 </html>
