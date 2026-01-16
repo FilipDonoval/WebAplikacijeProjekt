@@ -7,11 +7,50 @@
     <title>Thank you - NauticApp</title>
     <link rel="icon" href="favicon.png" type="image/png">
     <link rel="stylesheet" href="css/style.css">
-    <script type="text/javascript" src="js/main.js" defer>
-      if (localStorage.getItem('darkmode') === 'active') {
-        document.documentElement.classList.add('darkmode');
-      }
+    <script>
+    if (localStorage.getItem('darkmode') === 'active') {
+      document.documentElement.classList.add('darkmode');
+    }
     </script>
+    <script type="text/javascript" src="js/main.js" defer></script>
+    <style>
+
+    section {
+    display: grid;
+    grid-template-comumns: auto;
+    
+    }
+
+    .button {
+    margin-top: 1em;
+    justify-self: center;
+    text-decoration: none;
+    padding: 0.25em 0.5em;
+    background: var(--linearSecondaryAccent);
+    color: var(--background);
+    font-size: var(--h3);
+    border-radius: 0.5em;
+    display: inline-block;
+    text-align: center;
+    z-index: 2;
+    }
+
+    .button:hover {
+    background: var(--linearPrimarySecondary)
+    }
+
+    @media screen and (min-width: 769px) and (max-width: 1024px) {
+    }
+
+    @media screen and (max-width: 768px) {
+    main {
+    padding: 2em;
+    grid-template-columns: 1fr;
+    padding-bottom: 4em;
+    }
+    }
+
+    </style>
   </head>
   <body>
     <!-- HEADER --------------------------------------------------------------->
@@ -44,7 +83,7 @@
       <section>
         <h1>Thank your for your message</h1>
         <p>Your message will be locked at we will get back to you.</p>
-        <a href="index.html">Back to main page</a>
+        <a class="button" href="index.html">Back to main page</a>
       </section>
     </main>
 

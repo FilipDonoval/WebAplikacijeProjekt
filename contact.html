@@ -7,11 +7,12 @@
     <title>Contact - NauticApp</title>
     <link rel="icon" href="favicon.png" type="image/png">
     <link rel="stylesheet" href="css/style.css">
-    <script type="text/javascript" src="js/main.js" defer>
+    <script>
     if (localStorage.getItem('darkmode') === 'active') {
       document.documentElement.classList.add('darkmode');
     }
     </script>
+    <script type="text/javascript" src="js/main.js" defer></script>
     <style>
 
     main {
@@ -19,37 +20,35 @@
     align-items: center;
     }
 
-    main iframe {
+    .map {
     width: 100%;
     aspect-ratio: 4 / 3;
     max-width: 45em;
     border-radius: 16px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    box-shadow: 0 1px 4px var(--static7);
     }
 
-    form.card {
+    .card {
     display: grid;
     background-color: var(--background-light);
     padding: 2em;
     border-radius: 16px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    box-shadow: 0 1px 4px var(--static7);
     gap: 0.5em;
     width: 70%;
     }
 
-    form.card h3 {
+    .card h3 {
     margin-bottom: 0.5em;
     text-align: center;
     }
 
-    form.card label {
+    .card label {
     font-weight: 500;
     color: var(--text);
     }
 
-    form.card input,
-    form.card select,
-    form.card textarea {
+    .input {
     padding: 0.7em;
     border: 1px solid var(--static7);
     background: var(--background);
@@ -60,15 +59,13 @@
     }
 
 
-    form.card input:focus,
-    form.card select:focus,
-    form.card textarea:focus {
+    .input:focus {
     outline: none;
     border-color: var(--secondary);
     box-shadow: 0 0 5px rgba(0,119,204,0.3);
     }
 
-    form.card button.btn {
+    .send-button {
     background: var(--linearSecondaryAccent);
     color: var(--background);
     border: none;
@@ -78,14 +75,13 @@
     cursor: pointer;
     }
 
-    form.card button.btn:hover {
+    .send-button:hover {
     background: var(--linearPrimarySecondary)
     }
 
     @media screen and (min-width: 769px) and (max-width: 1024px) {
-
-
     }
+
     @media screen and (max-width: 768px) {
     main {
     padding: 2em;
@@ -93,12 +89,9 @@
     padding-bottom: 4em;
     }
 
-    form.card {
+    .card {
     width: 90%;
     }
-
-    }
-
     }
     </style>
   </head>
@@ -130,27 +123,45 @@
 
     <!-- MAIN --------------------------------------------------------------->
     <main>
-      <iframe src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d2872.1669381701836!2d15.917831594498951!3d45.7827375747059!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zNDXCsDQ2JzU5LjMiTiAxNcKwNTUnMDQuNiJF!5e1!3m2!1sen!2shr!4v1768411046687!5m2!1sen!2shr" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      <iframe class="map" src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d2872.1669381701836!2d15.917831594498951!3d45.7827375747059!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zNDXCsDQ2JzU5LjMiTiAxNcKwNTUnMDQuNiJF!5e1!3m2!1sen!2shr!4v1768411046687!5m2!1sen!2shr" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
       <form class="card" action="https://formsubmit.co/fdonoval@vvg.hr" method="POST">
         <input type="hidden" name="_captcha" value="false">
         <input type="hidden" name="_template" value="table">
         <input type="hidden" name="_next" value="https://filipdonoval.github.io/WebAplikacijeProjekt/thankyou.html">
+
         <h3>Contact Us</h3>
-        <label for="firstName">First Name*</label><input id="firstName" name="firstName" class="input" required>
-        <label for="lastName">Last Name*</label><input id="lastName" name="lastName" class="input" required>
-        <label for="email">Email*</label><input id="email" name="email" type="email" class="input" required>
-        <label for="country">Country*</label>
-        <select id="country" name="country" required>
+
+        <label for="fname">First Name: *</label>
+        <input type="text" id="fname" name="fname" class="input" required>
+
+        <label for="lname">Last Name: *</label>
+        <input type="text" id="lname" name="lname" class="input" required>
+
+        <label for="email">Email: *</label>
+        <input type="email" id="email" name="email" class="input" required>
+
+        <label for="country">Country: *</label>
+        <select id="country" name="country" class="input" required>
           <option value="">Select...</option>
           <option>Croatia</option>
           <option>Slovenia</option>
           <option>Bosnia and Herzegovina</option>
           <option>Serbia</option>
           <option>Germany</option>
+          <option>Other</option>
         </select>
-        <label><input style="width: auto; margin-right: 0.25em;" type="checkbox" id="newsletter" name="newsletter"> I want to receive the newsletter</label>
-        <label for="message">Message*</label><textarea id="message" name="message" class="input" required></textarea>
-        <button class="btn" type="submit">Send</button>
+
+        <div>
+          <input style="width: auto; margin-right: 0.25em;" type="checkbox" id="newsletter" name="newsletter"> 
+          <label for="newsletter">I want to receive the newsletter</label>
+        </div>
+
+        <label for="message">Message*</label>
+        <textarea id="message" name="message" class="input" required></textarea>
+
+        <button class="send-button" type="submit">Send</button>
+
       </form>
     </main>
 
