@@ -161,7 +161,7 @@
   <script>
   async function getReleasesNames(curPage) {
     //const response = await fetch('https://api.github.com/repos/FreeCAD/FreeCAD/releases?per_page=2&page=' + curPage)
-    const response = await fetch('https://api.github.com/repos/FilipDonoval/NauticMap/releases?per_page2&page=' + curPage)
+    const response = await fetch('https://api.github.com/repos/FilipDonoval/NauticMap/releases?per_page=2&page=' + curPage)
     const json = await response.json()
 
     const releases = []
